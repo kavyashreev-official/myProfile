@@ -10,5 +10,7 @@ document.addEventListener("DOMContentLoaded",
         initThemeToggle();
         //projects
         renderProjects();
+        // education
+        renderTimeline();
     }
 )

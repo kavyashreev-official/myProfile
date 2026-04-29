@@ -1,21 +1,403 @@
-.dark-mode{
-    background-color: black;
-    color: white;
+/* ============================================================
+   Kavyashree V — Portfolio Color Theme
+   Palette: Deep Navy + Electric Cyan
+   ============================================================ */
+
+/* ── CSS Variables ── */
+:root {
+  --navy-950: #050d1a;
+  --navy-900: #0a1628;
+  --navy-800: #0f2040;
+  --navy-700: #162e58;
+  --navy-600: #1e3d70;
+  --cyan-400:  #22d3ee;
+  --cyan-300:  #67e8f9;
+  --cyan-glow: rgba(34, 211, 238, 0.15);
+  --slate-100: #f1f5f9;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --white:     #f8fafc;
+  --transition: 0.25s ease;
 }
-.dark-mode nav{
-    background-color: rgb(229, 223, 223);
-    /* color: white; */
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--navy-950);
+  color: var(--slate-300);
+  font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+  line-height: 1.7;
 }
-.dark-mode section{
-    background-color: black;
+
+/* ── Typography ── */
+h1, h2, h3, h4 {
+  color: var(--white);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
-.dark-mode .bg-blue-100{
-    background-color: black;
-    color: white;
+
+h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: 1.4rem; }
+
+p { color: var(--slate-400); }
+
+/* ── Accent / Highlight ── */
+.text-accent        { color: var(--cyan-400); }
+span.accent         { color: var(--cyan-400); }
+
+/* ── Sections ── */
+section {
+  background-color: var(--navy-950);
 }
-.dark-mode .bg-white{
-    background-color: black;
+
+/* alternating section tint */
+#projects   { background-color: var(--navy-950); }
+#experience { background-color: var(--navy-900); }
+#skills     { background-color: var(--navy-800) !important; }
+#links      { background-color: var(--navy-900) !important; }
+
+/* ── Hero ── */
+section:first-of-type {
+  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(34,211,238,0.07) 0%, transparent 70%),
+              var(--navy-950);
 }
-.dark-mode .text-gray-700{
-    color: white;
+
+/* Profile photo ring */
+section:first-of-type img {
+  border: 2px solid var(--navy-700);
+  box-shadow: 0 0 0 1px rgba(34,211,238,0.25), 0 20px 60px rgba(0,0,0,0.5);
+  border-radius: 12px;
+}
+
+section:first-of-type img:hover {
+  border-color: var(--cyan-400) !important;
+  box-shadow: 0 0 0 3px var(--cyan-glow), 0 24px 64px rgba(0,0,0,0.5);
+}
+
+/* ── Navbar ── */
+nav {
+  background-color: rgba(10, 22, 40, 0.97) !important;
+  border-bottom: 1px solid var(--navy-700) !important;
+  backdrop-filter: blur(12px);
+}
+
+nav a { color: var(--slate-300) !important; transition: color var(--transition); }
+nav a:hover, nav ul li a:hover { color: var(--cyan-400) !important; }
+
+/* Logo gradient */
+nav a.text-transparent {
+  background-image: linear-gradient(135deg, var(--cyan-400), var(--cyan-300)) !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ── Buttons ── */
+a.bg-blue-600,
+button.bg-blue-600 {
+  background-color: var(--cyan-400) !important;
+  color: var(--navy-950) !important;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+
+a.bg-blue-600:hover,
+button.bg-blue-600:hover,
+a.hover\:bg-blue-700:hover,
+button.hover\:bg-blue-700:hover {
+  background-color: var(--cyan-300) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(34,211,238,0.3);
+}
+
+a.bg-slate-700,
+button.bg-slate-700 {
+  background-color: transparent !important;
+  color: var(--cyan-400) !important;
+  border: 1.5px solid var(--cyan-400) !important;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+
+a.bg-slate-700:hover,
+a.hover\:bg-slate-800:hover {
+  background-color: var(--cyan-glow) !important;
+  transform: translateY(-1px);
+}
+
+/* ── Project cards ── */
+#projects-container > div,
+.project-card {
+  background: var(--navy-900) !important;
+  border: 1px solid var(--navy-700) !important;
+  border-radius: 12px !important;
+  transition: all var(--transition);
+}
+
+#projects-container > div:hover,
+.project-card:hover {
+  border-color: var(--cyan-400) !important;
+  box-shadow: 0 0 0 1px var(--cyan-glow), 0 8px 32px rgba(0,0,0,0.4);
+  transform: translateY(-3px);
+}
+
+/* Project tech tags */
+.project-tag,
+.tech-tag {
+  background: rgba(34, 211, 238, 0.1) !important;
+  color: var(--cyan-300) !important;
+  border: 1px solid rgba(34, 211, 238, 0.25) !important;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  padding: 2px 10px;
+  font-weight: 500;
+}
+
+/* ── Project Search Input ── */
+#project-search {
+  background: var(--navy-900) !important;
+  border: 1px solid var(--navy-700) !important;
+  color: var(--white) !important;
+  border-radius: 8px;
+  transition: border-color var(--transition);
+}
+
+#project-search:focus {
+  border-color: var(--cyan-400) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--cyan-glow);
+}
+
+#project-search::placeholder { color: var(--slate-400); }
+
+/* ── Filter Buttons ── */
+#project-filters button,
+.filter-btn {
+  background: var(--navy-900) !important;
+  border: 1px solid var(--navy-700) !important;
+  color: var(--slate-300) !important;
+  border-radius: 99px;
+  padding: 6px 18px;
+  font-size: 0.875rem;
+  transition: all var(--transition);
+}
+
+#project-filters button:hover,
+.filter-btn:hover,
+#project-filters button.active,
+.filter-btn.active {
+  background: var(--cyan-glow) !important;
+  border-color: var(--cyan-400) !important;
+  color: var(--cyan-400) !important;
+}
+
+/* ── Skills ── */
+#skills-container > div,
+.skill-card {
+  background: var(--navy-900) !important;
+  border: 1px solid var(--navy-700) !important;
+  border-radius: 12px !important;
+  transition: all var(--transition);
+}
+
+#skills-container > div:hover,
+.skill-card:hover {
+  border-color: var(--cyan-400) !important;
+  box-shadow: 0 0 0 1px var(--cyan-glow);
+}
+
+/* Skill progress bars */
+.skill-progress,
+[class*="progress"] {
+  background: var(--navy-700) !important;
+  border-radius: 99px !important;
+}
+
+.skill-progress-fill,
+[class*="progress-fill"] {
+  background: linear-gradient(90deg, var(--cyan-400), var(--cyan-300)) !important;
+  border-radius: 99px !important;
+}
+
+/* ── Timeline ── */
+#timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+#timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--cyan-400), transparent);
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--cyan-400);
+  border-radius: 50%;
+  position: absolute;
+  left: -5px;
+  box-shadow: 0 0 0 4px var(--cyan-glow);
+}
+
+.timeline-card {
+  background: var(--navy-900) !important;
+  border: 1px solid var(--navy-700) !important;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: border-color var(--transition);
+}
+
+.timeline-card:hover { border-color: var(--cyan-400) !important; }
+
+/* ── Social / Links Section ── */
+#links a {
+  background: var(--navy-800) !important;
+  border: 1px solid var(--navy-700) !important;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  color: var(--slate-300) !important;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition);
+}
+
+#links a:hover {
+  border-color: var(--cyan-400) !important;
+  color: var(--cyan-400) !important;
+  background: var(--cyan-glow) !important;
+  transform: translateY(-2px);
+}
+
+/* ── Contact Modal ── */
+#contact-modal {
+  background: rgba(5, 13, 26, 0.8) !important;
+}
+
+#modal-content {
+  background: var(--navy-900) !important;
+  border: 1px solid var(--navy-700) !important;
+  color: var(--white) !important;
+}
+
+#modal-content h3 { color: var(--white); }
+
+#contact-name,
+#contact-email {
+  background: var(--navy-800) !important;
+  border: 1px solid var(--navy-700) !important;
+  color: var(--white) !important;
+  border-radius: 8px;
+  transition: border-color var(--transition);
+}
+
+#contact-name:focus,
+#contact-email:focus {
+  border-color: var(--cyan-400) !important;
+  box-shadow: 0 0 0 3px var(--cyan-glow) !important;
+  outline: none;
+}
+
+#contact-name::placeholder,
+#contact-email::placeholder { color: var(--slate-400); }
+
+#form-cancel {
+  background: var(--navy-800) !important;
+  color: var(--slate-300) !important;
+  border: 1px solid var(--navy-700) !important;
+  border-radius: 8px;
+}
+
+#form-cancel:hover {
+  border-color: var(--slate-400) !important;
+}
+
+/* ── Floating CTA button ── */
+#modal-trigger {
+  background: var(--cyan-400) !important;
+  color: var(--navy-950) !important;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 24px rgba(34,211,238,0.35);
+  transition: all var(--transition);
+}
+
+#modal-trigger:hover {
+  background: var(--cyan-300) !important;
+  transform: scale(1.08);
+  box-shadow: 0 6px 32px rgba(34,211,238,0.45);
+}
+
+/* ── Theme Toggle ── */
+#theme-toggle {
+  background: var(--navy-800) !important;
+  color: var(--slate-300) !important;
+  border: 1px solid var(--navy-700) !important;
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+
+#theme-toggle:hover {
+  border-color: var(--cyan-400) !important;
+  color: var(--cyan-400) !important;
+}
+
+/* ── Light theme override (when .light-mode added to body) ── */
+body.light-mode {
+  --navy-950: #f8fafc;
+  --navy-900: #f1f5f9;
+  --navy-800: #e2e8f0;
+  --navy-700: #cbd5e1;
+  --navy-600: #94a3b8;
+  --white:    #0f172a;
+  --slate-300: #334155;
+  --slate-400: #475569;
+  background-color: #f8fafc;
+  color: #334155;
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4 { color: #0f172a; }
+
+body.light-mode nav {
+  background-color: rgba(248, 250, 252, 0.97) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy-900); }
+::-webkit-scrollbar-thumb { background: var(--navy-600); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cyan-400); }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: var(--white);
+}
+
+/* ── Stat badges in Hero ── */
+.flex.flex-wrap.gap-6 span {
+  background: var(--navy-800);
+  border: 1px solid var(--navy-700);
+  color: var(--cyan-300);
+  border-radius: 99px;
+  padding: 4px 16px;
+  font-size: 0.8rem;
 }
