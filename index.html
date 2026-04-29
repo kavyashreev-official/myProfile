@@ -32,11 +32,11 @@
             <div
                 class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center lg:items-start mb-8">
 
-                <a href="#projects" class="bg-red-400 hover:bg-green-500 px-10 py-4 rounded shadow-xl">
+                <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg shadow-md">
                     View Projects
                 </a>
 
-                <a href="#resume" class="bg-blue-400 hover:bg-green-500 px-10 py-4 rounded shadow-xl">
+                <a href="#resume" class="bg-slate-700 hover:bg-slate-800 text-white px-10 py-4 rounded-lg shadow-md">
                     Download Resume
                 </a>
 
@@ -69,22 +69,22 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
             <a href="#"
-                class="text-2xl font-bold bg-clip-text bg-gradient-to-r from-red-400 to-slate-700 text-transparent">
+                class="text-2xl font-bold bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 text-transparent">
                 KSV
             </a>
 
             <ul class="hidden md:flex items-center gap-10">
 
-                <li><a href="#projects" class="text-lg font-bold hover:text-blue-600">Projects</a></li>
+                <li><a href="#projects" class="text-lg font-bold hover:text-blue-700 transition-colors">Projects</a></li>
 
-                <li><a href="#experience" class="text-lg font-bold hover:text-blue-600">Experience</a></li>
+                <li><a href="#experience" class="text-lg font-bold hover:text-blue-700 transition-colors">Experience</a></li>
 
-                <li><a href="#skills" class="text-lg font-bold hover:text-blue-600">Skills</a></li>
+                <li><a href="#skills" class="text-lg font-bold hover:text-blue-700 transition-colors">Skills</a></li>
 
             </ul>
 
             <button id="theme-toggle" class="bg-gray-200 px-4 py-2 rounded font-bold">Theme</button>
-            <a href="#contact" class="bg-red-400 hover:bg-green-500 rounded transition-all duration-300 px-8 py-3">
+            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 px-8 py-3">
                 Let's talk
             </a>
 
@@ -152,7 +152,7 @@
 
     <!-- SKILLS -->
 
-    <section id="skills" class="py-24 px-8 lg:px-16 bg-blue-100">
+    <section id="skills" class="py-24 px-8 lg:px-16 bg-slate-100">
 
         <div class="max-w-7xl mx-auto">
 
@@ -170,7 +170,7 @@
     </section>
 
     <!-- Adding social media links -->
-    <section id="links" class="py-24 px-8 lg:px-16 bg-blue-100">
+    <section id="links" class="py-24 px-8 lg:px-16 bg-slate-100">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <a href="https://github.com/kavyashreev-official/MERN_Stu_FebMay26Mys" target="_blank" class="">Github</a>
             <a href="" target="_blank">LinkedIn</a>
@@ -182,7 +182,7 @@
     <!-- CONTACT MODAL -->
 
     <button id="modal-trigger"
-        class="fixed bottom-8 right-8 w-16 h-16 bg-blue-900 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl font-bold">
+        class="fixed bottom-8 right-8 w-16 h-16 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg">
         ☏
     </button>
 
@@ -195,7 +195,7 @@
 
                 <div class="sticky top-0 border-b p-8 pt-12 bg-white">
 
-                    <h3 class="text-2xl font-bold">Contact Me</h3>
+                    <h3 class="text-2xl font-bold text-black-200">Contact Me</h3>
 
                     <button id="modal-close" class="absolute top-6 right-6 text-2xl font-bold">
                         ×
@@ -209,17 +209,17 @@
                         class="w-full border rounded px-4 py-3">
 
                     <input id="contact-email" type="email" placeholder="email@website.com"
-                        class="w-full border rounded px-4 py-3">
+                        class="w-full border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none rounded-lg px-4 py-3">
 
                     <p id="form-message" class="text-sm text-red-500"></p>
 
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
 
-                        <button type="button" id="form-cancel" class="flex-1 font-bold py-4 px-6">
+                        <button type="button" id="form-cancel" class="flex-1 font-bold py-4 px-6 bg-gray-200 hover:bg-gray-300 rounded-lg">
                             Cancel
                         </button>
 
-                        <button type="submit" class="flex-1 font-bold py-4 px-6">
+                        <button type="submit" class="flex-1 font-bold py-4 px-6 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
                             Submit
                         </button>
 
@@ -241,6 +241,7 @@
     <script src="js/features/contact-validation.js"></script>
     <script src="js/features/theme-toggle.js"></script>
     <script src="js/features/project-render.js"></script>
+    <script src="js/features//timeline-render.js"></script>
     <script src="js/main.js"></script>
 
 </body>
