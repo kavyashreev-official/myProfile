@@ -108,6 +108,122 @@ function renderProjects(dataToRender) {
             techRow.appendChild(tag);
         });
 
+        // ── Sub-projects expand row (only if subProjects exist) ──
+        if (project.subProjects && project.subProjects.length > 0) {
+
+            // Toggle state
+            let expanded = false;
+
+            // ── Clickable header row ──
+            const subRow = document.createElement("div");
+            subRow.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+        cursor: pointer;
+    `;
+
+            // ── 3 project name chips ──
+            const subDots = document.createElement("div");
+            subDots.style.cssText = `
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+    `;
+
+            project.subProjects.forEach(function (sub) {
+                const chip = document.createElement("span");
+                chip.textContent = sub.name;
+                chip.style.cssText = `
+            background: rgba(34, 211, 238, 0.06);
+            color: #94a3b8;
+            border: 1px dashed rgba(34, 211, 238, 0.25);
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 10px;
+        `;
+                subDots.appendChild(chip);
+            });
+
+            // ── "View All 3 Projects" toggle label ──
+            const expandLabel = document.createElement("span");
+            expandLabel.textContent = "▼ View All 3 Projects";
+            expandLabel.style.cssText = `
+        font-size: 0.75rem;
+        color: #22d3ee;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        transition: opacity 0.2s;
+    `;
+
+            subRow.appendChild(subDots);
+            subRow.appendChild(expandLabel);
+
+            // ── Expanded sub-project cards container ──
+            const subCardContainer = document.createElement("div");
+            subCardContainer.style.cssText = `
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 16px;
+        width: 100%;
+    `;
+
+            project.subProjects.forEach(function (sub) {
+                const subCard = document.createElement("div");
+                subCard.style.cssText = `
+            background: rgba(34, 211, 238, 0.04);
+            border: 1px solid rgba(34, 211, 238, 0.15);
+            border-radius: 10px;
+            padding: 10px 14px;
+            text-align: left;
+        `;
+
+                const subName = document.createElement("p");
+                subName.textContent = sub.name;
+                subName.style.cssText = `
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 4px;
+        `;
+
+                const subDesc = document.createElement("p");
+                subDesc.textContent = sub.description;
+                subDesc.style.cssText = `
+            font-size: 0.75rem;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        `;
+
+                const subLinks = document.createElement("div");
+                subLinks.style.cssText = `display: flex; gap: 8px;`;
+
+                if (sub.github) subLinks.appendChild(makeLink("GitHub", sub.github));
+                if (sub.liveDemo && sub.liveDemo !== "#LD") subLinks.appendChild(makeLink("Live Demo", sub.liveDemo));
+
+                subCard.appendChild(subName);
+                subCard.appendChild(subDesc);
+                subCard.appendChild(subLinks);
+                subCardContainer.appendChild(subCard);
+            });
+
+            // ── Toggle on click ──
+            subRow.addEventListener("click", function (e) {
+                e.stopPropagation(); // prevent view counter from firing
+                expanded = !expanded;
+                subCardContainer.style.display = expanded ? "flex" : "none";
+                expandLabel.textContent = expanded ? "▲ Hide Projects" : "▼ View All 3 Projects";
+            });
+
+            card.appendChild(subRow);
+            card.appendChild(subCardContainer);
+        }
         // ── Link buttons row ──
         const btnRow = document.createElement("div");
         btnRow.style.cssText = `
@@ -153,21 +269,21 @@ function renderProjects(dataToRender) {
             btnRow.appendChild(makeLink("GitHub", project.github));
         }
 
-        // ── Views counter ──
-        const viewText = document.createElement("p");
-        viewText.style.cssText = `
-            font-size: 0.75rem;
-            color: #475569;
-            margin-top: 14px;
-        `;
-        viewText.textContent = "Views: " + (typeof getViews === "function" ? getViews(project.id) : 0);
+        // // ── Views counter ──
+        // const viewText = document.createElement("p");
+        // viewText.style.cssText = `
+        //     font-size: 0.75rem;
+        //     color: #475569;
+        //     margin-top: 14px;
+        // `;
+        // viewText.textContent = "Views: " + (typeof getViews === "function" ? getViews(project.id) : 0);
 
-        // Click to increment views — correctly inside forEach
-        card.addEventListener("click", function () {
-            if (typeof updateViews === "function") {
-                viewText.textContent = "Views: " + updateViews(project.id);
-            }
-        });
+        // // Click to increment views — correctly inside forEach
+        // card.addEventListener("click", function () {
+        //     if (typeof updateViews === "function") {
+        //         viewText.textContent = "Views: " + updateViews(project.id);
+        //     }
+        // });
 
         // ── Assemble card ──
         card.appendChild(statusBadge);
@@ -176,7 +292,7 @@ function renderProjects(dataToRender) {
         card.appendChild(projectDescription);
         card.appendChild(techRow);
         card.appendChild(btnRow);
-        card.appendChild(viewText);
+        // card.appendChild(viewText);
 
         projectsContainer.appendChild(card);
     });
@@ -267,7 +383,7 @@ function renderProjects(dataToRender) {
 //         card.appendChild(iconBox1);
 //         card.appendChild(iconBox2);
 
-//         //append 
+//         //append
 //         projectsContainer.appendChild(card);
 //     });
 //     console.log("Projects rendered successfully");
