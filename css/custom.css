@@ -649,8 +649,32 @@ body.light-mode #skills-container > div p {
   color: #64748b !important;
 }
 
-/* Skill icon box — keep dark for contrast */
+/* Skill icon box — keep dark for contrast
 body.light-mode #skills-container > div div[style*="background"] {
   background: #1e293b !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+} */
+
+/* Skill icon box — soften in light mode to match timeline style */
+body.light-mode #skills-container > div div[style*="background"] {
+  background: #e8edf5 !important;
+  box-shadow: none !important;
+  border-radius: 14px !important;
+}
+
+/* Icon letter color — dark on light bg */
+body.light-mode #skills-container > div div[style*="background"] span,
+body.light-mode #skills-container > div div[style*="background"] p {
+  color: #1e293b !important;
+}
+
+/* Skills section background */
+body.light-mode #skills {
+  background-color: #f0f4f8 !important;
+}
+
+/* Skills card hover in light mode */
+body.light-mode #skills-container > div:hover {
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
 }
