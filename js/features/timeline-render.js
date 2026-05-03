@@ -1,53 +1,4 @@
-// Renders Education & Experience into #timeline
-
-const educationData = [
-    {
-        id: "edu-1",
-        shortName: "VTU",
-        degree: "B.E in Computer Science",
-        institution: "CIT",
-        fullName: "Cauvery Institute of Technology, Mandya",
-        cgpa: "7.5",
-        year: "2026",
-        type: "education",
-        color: "#818cf8"   // indigo
-    },
-    {
-        id: "edu-2",
-        shortName: "KPUB",
-        degree: "Class 12 — PCMB",
-        institution: "Marimallappa's Pre-University College, Mysore",
-        cgpa: "7.5",
-        year: "2021",
-        type: "education",
-        color: "#818cf8"
-    },
-    {
-        id: "edu-3",
-        shortName: "ICSE",
-        degree: "Class 10",
-        institution: "Jyothi Nivas School, Srirangapatna",
-        cgpa: "7.5",
-        year: "2019",
-        type: "education",
-        color: "#818cf8"
-    }
-];
-
-// Add your work experience here if any — leave empty array if none yet
-const experienceData = [
-    // {
-    //     id: "exp-1",
-    //     shortName: "INTERN",
-    //     degree: "Frontend Developer Intern",
-    //     institution: "Company Name",
-    //     cgpa: null,
-    //     year: "2024",
-    //     type: "experience",
-    //     color: "#22d3ee"
-    // }
-];
-
+// js/features/timeline-render.js
 function renderTimeline() {
     const timeline = document.getElementById("timeline");
     if (!timeline) {
@@ -78,7 +29,7 @@ function renderTimeline() {
             gap: 0;
             border-radius: 14px;
             overflow: hidden;
-            border: 1px solid #162e58;
+            border: 1px solid var(--border, #162e58);
             transition: border-color 0.25s ease, transform 0.25s ease;
         `;
         row.addEventListener("mouseenter", () => {
@@ -86,7 +37,7 @@ function renderTimeline() {
             row.style.transform = "translateX(4px)";
         });
         row.addEventListener("mouseleave", () => {
-            row.style.borderColor = "#162e58";
+            row.style.borderColor = "var(--border, #162e58)";
             row.style.transform = "translateX(0)";
         });
 
@@ -107,14 +58,14 @@ function renderTimeline() {
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            border-right: 1px solid #162e58;
+            border-right: 1px solid var(--border, #162e58);
         `;
 
         // ── Main content ──
         const content = document.createElement("div");
         content.style.cssText = `
             flex: 1;
-            background: #0a1628;
+            background: var(--bg-card, #0a1628);
             padding: 16px 24px;
             display: flex;
             align-items: center;
@@ -122,7 +73,7 @@ function renderTimeline() {
             gap: 12px;
         `;
 
-        // Left text block
+        // ── Left text block ──
         const textBlock = document.createElement("div");
 
         const degreeLine = document.createElement("p");
@@ -130,7 +81,7 @@ function renderTimeline() {
         degreeLine.style.cssText = `
             font-size: 1rem;
             font-weight: 600;
-            color: #f8fafc;
+            color: var(--text-heading, #f8fafc);
             margin: 0 0 4px 0;
         `;
 
@@ -138,14 +89,14 @@ function renderTimeline() {
         institutionLine.textContent = item.fullName || item.institution;
         institutionLine.style.cssText = `
             font-size: 0.8rem;
-            color: #94a3b8;
+            color: var(--text-muted, #94a3b8);
             margin: 0;
         `;
 
         textBlock.appendChild(degreeLine);
         textBlock.appendChild(institutionLine);
 
-        // Right meta block
+        // ── Right meta block ──
         const metaBlock = document.createElement("div");
         metaBlock.style.cssText = `
             text-align: right;
@@ -168,15 +119,15 @@ function renderTimeline() {
         yearLine.textContent = item.year;
         yearLine.style.cssText = `
             font-size: 0.82rem;
-            color: #94a3b8;
+            color: var(--text-muted, #94a3b8);
             font-weight: 500;
             margin: 0;
         `;
         metaBlock.appendChild(yearLine);
 
+        // ── Assemble ──
         content.appendChild(textBlock);
         content.appendChild(metaBlock);
-
         row.appendChild(badge);
         row.appendChild(content);
         timeline.appendChild(row);
@@ -185,7 +136,6 @@ function renderTimeline() {
     console.log("Timeline rendered successfully");
 }
 
-// Auto-run when DOM is ready
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", renderTimeline);
 } else {
