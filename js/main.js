@@ -12,5 +12,15 @@ document.addEventListener("DOMContentLoaded",
         renderProjects();
         // education
         renderTimeline();
+        // typing-animation
+        initTypingAnimation();
+        // scroll-progess
+        initScrollProgress();
+        // scroll-spy
+        initScrollSpy();
+        // back-to-top
+        initBackToTop();
+        // Greeting
+        initGreeting();
     }
 )
