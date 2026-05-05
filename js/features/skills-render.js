@@ -1,14 +1,17 @@
 // js/features/skills-render.js
 
 const skillColors = {
-    "ReactJS":      "#61dafb",
-    "Tailwind CSS": "#38bdf8",
-    "JavaScript":   "#facc15",
-    "MongoDB":      "#4ade80",
-    "Node.js":      "#86efac",
-    "HTML & CSS":   "#fb923c",
-    "Git & GitHub": "#f472b6",
-    "C++":          "#a78bfa",
+    "ReactJS":      "#61dafb",  
+    "Tailwind CSS": "#38bdf8",   
+    "JavaScript":   "#facc15",   
+    "MongoDB":      "#4ade80",   
+    "Node.js":      "#86efac",   
+    "HTML & CSS":   "#fb923c",   
+    "Git & GitHub": "#f472b6",   
+    "C++":          "#a78bfa",   
+    "Python":       "#3b82f6",  
+    "MediaPipe":    "#22d3ee",   
+    "TensorFlow":   "#f97316",  
 };
 
 function getSkillColor(name) {
