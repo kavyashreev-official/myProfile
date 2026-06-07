@@ -9,16 +9,12 @@ function initGreeting() {
 
     if (hour >= 5 && hour < 12) {
         greeting = "Good Morning";
-        emoji    = "☀️";
     } else if (hour >= 12 && hour < 17) {
         greeting = "Good Afternoon";
-        emoji    = "🌤️";
     } else if (hour >= 17 && hour < 21) {
         greeting = "Good Evening";
-        emoji    = "🌇";
     } else {
         greeting = "Good Night";
-        emoji    = "🌙";
     }
 
     // ── Create greeting element ──
